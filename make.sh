@@ -38,12 +38,23 @@ open http://localhost:8080/
 ./bin/spark-shell --master $SPARK_URL
 ./bin/pyspark --master $SPARK_URL
 
+
+
 # Follow quick start tutorial here:
 # Tutorial: http://spark.apache.org/docs/latest/quick-start.html
 # Test the spark shell.
+#export PYSPARK_DRIVER_PYTHON=ipython
+export PYSPARK_PYTHON=ipython2
 bin/pyspark
 
 :<<EOF
 textFile = sc.textFile("README.md")
 textFile.count()
 EOF
+
+
+# Run a python program on the cluster
+bin/spark-submit --master $SPARK_URL ../../SimpleApp.py
+
+# Run a python program on a instant local "cluster".
+bin/spark-submit --master local[4] ../SimpleApp.py
