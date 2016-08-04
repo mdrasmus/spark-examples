@@ -40,15 +40,12 @@ def calc_synteny(s1, s2, k, threshold):
     return mat
 
 
-if 0:
+# Make simulated data.
+def make_sim():
     a = make_seq(1000)
     b = make_seq(1000)
     s1 = a + b
     s2 = a + revcomp(b)
-
-    print s1
-    print
-    print s2
 
     with open('data/s1.txt', 'w') as out:
         out.write(s1)
@@ -57,5 +54,4 @@ if 0:
         out.write(s2)
 
 
-if 1:
-    print calc_synteny(s1, s2, 10, .9)
+make_sim()
